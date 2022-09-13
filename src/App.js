@@ -22,90 +22,21 @@ function App() {
             img: img3,
             body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
         },
-        {
-            title: 'First Title',
-            img: img1,
-            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
-        },
-        {
-            title: 'Second Title',
-            img: img2,
-            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
-        },
-        {
-            title: 'Third Title',
-            img: img3,
-            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
-        },
-        {
-            title: 'First Title',
-            img: img1,
-            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
-        },
-        {
-            title: 'Second Title',
-            img: img2,
-            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
-        },
-        {
-            title: 'Third Title',
-            img: img3,
-            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
-        },
-        {
-            title: 'First Title',
-            img: img1,
-            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
-        },
-        {
-            title: 'Second Title',
-            img: img2,
-            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
-        },
-        {
-            title: 'Third Title',
-            img: img3,
-            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
-        },
-        {
-            title: 'First Title',
-            img: img1,
-            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
-        },
-        {
-            title: 'Second Title',
-            img: img2,
-            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
-        },
-        {
-            title: 'Third Title',
-            img: img3,
-            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
-        },
-        {
-            title: 'First Title',
-            img: img1,
-            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
-        },
-        {
-            title: 'Second Title',
-            img: img2,
-            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
-        },
-        {
-            title: 'Third Title',
-            img: img3,
-            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
-        },
     ]
     return (
         <div>
             <Header/>
             <div className="flex flex-row  my-6 flex-wrap">
                 {
-                    values.map((item, index) => {
-                        return <Card title={item.title} img={item.img} body={item.body}/>;
-                    })
+                    values.length ?
+                        (
+                            values.map((item, index) => {
+                                return <Card title={item.title} img={item.img} body={item.body}/>;
+                            })
+                        ) :
+                        (
+                            <h1>Don't have any data</h1>
+                        )
                 }
             </div>
         </div>
