@@ -28,7 +28,7 @@ const Main = () => {
               {
                   values.length ?
                       (
-                          values.map((item, index) => {
+                          values.map((item) => {
                               return <Card title={item.title} img={item.img} body={item.body}/>;
                           })
                       ) :
