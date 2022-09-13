@@ -1,4 +1,4 @@
-function Card(props) {
+const Card = (props) => {
     return (
         <div
             className="m-7 max-w-sm bg-white rounded-xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
