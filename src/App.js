@@ -14,7 +14,7 @@ const App = () => {
             <Header/>
             <BrowserRouter>
                 <Routes>
-                    <Route index   element={Main}/>
+                    <Route index element={Main}/>
                     <Route path="about" element={About}/>
                     <Route path="content" element={Content}/>
                     <Route path="*" element={Error_404}/>
