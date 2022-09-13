@@ -1,7 +1,7 @@
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Header from "./components/Header.js";
 import Main from "./components/Main";
 import Footer from "./components/Footer";
-import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Content from "./components/Content";
 import About from "./components/About";
 
