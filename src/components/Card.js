@@ -5,7 +5,6 @@ function Card(props) {
             <a href="src/components/Card#">
                 <img className="rounded-t-lg" src={props.img} alt={props.title}></img>
             </a>
-
             <div className="p-5">
                 <a href="src/components/Card#">
                     <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
