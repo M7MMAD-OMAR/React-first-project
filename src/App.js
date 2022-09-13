@@ -1,11 +1,11 @@
-import Header from "./Header";
-
+import Header from "./components/Header.js";
+import Card from "./components/Card.js";
 
 function App() {
   return (
     <div>
         <Header/>
-        <h1 className="text-amber-800 text-3xl">Hi from App component</h1>
+        <Card/>
     </div>
   );
 }
