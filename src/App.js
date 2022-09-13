@@ -6,11 +6,11 @@ import Content from "./components/Content";
 import About from "./components/About";
 
 
-
 const App = () => {
 
     return (
         <div>
+            <Header/>
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Main/>}/>
@@ -18,8 +18,6 @@ const App = () => {
                     <Route path="/content" element={<Content/>}/>
                 </Routes>
             </BrowserRouter>
-            <Header/>
-            <Main/>
             <Footer/>
         </div>
     );
