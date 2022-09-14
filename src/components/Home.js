@@ -2,7 +2,7 @@ import img1 from "../images/1.png";
 import img2 from "../images/2.png";
 import img3 from "../images/3.png";
 import Card from "./Card";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 
 const Home = () => {
     const values = [
@@ -25,6 +25,12 @@ const Home = () => {
     const [users, set_users] = useState([]);
     const [first_name, set_first_name] = useState('');
     const [last_name, set_last_name] = useState('');
+
+    useEffect(() => {
+        return () => {
+            console.log(first_name)
+        };
+    }, [first_name]);
 
     // change values in input by id element
     const content_string = (e) => {
