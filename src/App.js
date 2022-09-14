@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import {BrowserRouter as Router, Link, Navigate, Route, Routes, useNavigate} from "react-router-dom";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import Content from "./components/Content";
@@ -10,7 +10,7 @@ import Header from "./components/Header";
 const App = () => {
 
     return (
-        <div>
+        <>
             <Header/>
             <Router>
                 <Routes>
@@ -21,7 +21,7 @@ const App = () => {
                 </Routes>
             </Router>
             <Footer/>
-        </div>
+        </>
     );
 }
 
