@@ -25,26 +25,19 @@ const Home = () => {
         },
     ];
     const {users, add_users} = useContext(UsersList);
-    let first_name = useRef(null);
-    let last_name = useRef(null);
-
-
+    const [first_name, setFirst_name] = useState('');
+    const [last_name, setLast_name] = useState('');
+    let temps = []
     const print_data = () => {
-        if (first_name.current.value.length && last_name.current.value.length) {
-            console.log(first_name.current.value);
-            console.log(last_name.current.value);
-            add_users(first_name.current.value)
+            temps = JSON.parse(localStorage.getItem('temps') || '[]')
+            let temp = {
+                first_name: first_name,
+                last_name: last_name,
+            }
+            temps.push(temp);
+            localStorage.setItem('temps', JSON.stringify(temps));
 
-        } else {
-            console.log('fuck you')
-        }
     }
-
-    const clear_data = () => {
-        first_name.current.value = null;
-        last_name.current.value = null;
-    }
-
 
 
     return (
@@ -52,19 +45,23 @@ const Home = () => {
             {users}
             <div className='container'>
                 <label htmlFor="first_name">
-                    <input type="text" placeholder='First Name' name='first_name' id='first_name' ref={first_name}/>
+                    <input type="text" placeholder='First Name' name='first_name' id='first_name'
+                          onChange={(e)=>{setFirst_name(e.target.value)}} />
                 </label>
                 <br/>
                 <br/>
                 <label htmlFor="last_name">
-                    <input type="text" placeholder='Last Name' name='last_name' id='last_name' ref={last_name}/>
+                    <input type="text" placeholder='Last Name' name='last_name' id='last_name'
+                           onChange={(e)=>{setLast_name(e.target.value)}} />
                 </label>
                 <br/><br/>
                 <button value='Submit' onClick={print_data}>Submit</button>
-                <br/><br/>
-                <button value='Clear' onClick={clear_data}>Clear</button>
             </div>
-
+            <div className="flex flex-row  my-6 flex-wrap">
+                {
+                   console.log(temps)
+                }
+            </div>
             {/* show all cards start */}
             <div className="flex flex-row  my-6 flex-wrap">
                 {
