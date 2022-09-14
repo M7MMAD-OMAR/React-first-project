@@ -22,8 +22,7 @@ const Home = () => {
             body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
         },
     ];
-
-    const users = [];
+    const [users, set_users] = useState(users);
     const [first_name, set_first_name] = useState('');
     const [last_name, set_last_name] = useState('');
 
@@ -38,19 +37,21 @@ const Home = () => {
 
     // add item in users list and print data in console
     const add_item = () => {
-        users.push({
+        set_users([{
             'first_name': first_name,
             'last_name': last_name,
-        });
+        }]);
+
         users.map((e) => {
             console.log(e.first_name + ' ' + e.last_name)
         });
+
     }
 
     // Clear all input in home page
     const clear_input = () => {
-        set_first_name('');
-        set_last_name('');
+        set_first_name(' ');
+        set_last_name(' ');
     }
 
 
