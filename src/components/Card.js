@@ -1,6 +1,6 @@
 const Card = (props) => {
     return (
-        <div
+        <div key={props.key}
             className="m-7 max-w-sm bg-white rounded-xl border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700">
             <a href="src/components/Card#">
                 <img className="rounded-t-lg" src={props.img} alt={props.title}></img>

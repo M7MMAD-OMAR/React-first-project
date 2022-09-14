@@ -70,8 +70,8 @@ const Home = () => {
                 {
                     values.length ?
                         (
-                            values.map((item) => {
-                                return <Card title={item.title} img={item.img} body={item.body}/>;
+                            values.map((item, index) => {
+                                return <Card key={index} title={item.title} img={item.img} body={item.body}/>;
                             })
                         ) :
                         (
