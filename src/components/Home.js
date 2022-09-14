@@ -3,7 +3,7 @@ import img2 from "../images/2.png";
 import img3 from "../images/3.png";
 import Card from "./Card";
 
-const Main = () => {
+const Home = () => {
     const values = [
         {
             title: 'First Title',
@@ -43,4 +43,4 @@ const Main = () => {
     );
 }
 
-export default Main;
+export default Home;
