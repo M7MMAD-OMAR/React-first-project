@@ -26,8 +26,7 @@ const Home = () => {
     const [first_name, setFirst_name] = useState('');
     const [last_name, setLast_name] = useState('');
     const [users, setUsers] = useState(JSON.parse(localStorage.getItem('users') || '[]'))
-    // temps = JSON.parse(localStorage.getItem('temps') || '[]')
-    // let [temps, setTemps] = useState(JSON.parse(localStorage.getItem('temps') || '[]'));
+
 
     const clear_input = () => {
         setFirst_name('');
@@ -39,7 +38,6 @@ const Home = () => {
             first_name: first_name,
             last_name: last_name,
         }
-        console.log(users);
         users.push(temp)
         setUsers(users);
         localStorage.setItem('users', JSON.stringify(users));
@@ -78,6 +76,7 @@ const Home = () => {
             </div>
 
 
+            {/* Show Data in table*/}
             <table>
                 <tr>
                     <th>#</th>
