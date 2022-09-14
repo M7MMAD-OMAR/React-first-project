@@ -2,7 +2,7 @@ import img1 from "../images/1.png";
 import img2 from "../images/2.png";
 import img3 from "../images/3.png";
 import Card from "./Card";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 const Home = () => {
     const values = [
@@ -22,62 +22,40 @@ const Home = () => {
             body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
         },
     ];
-    const [users, set_users] = useState([]);
-    const [first_name, set_first_name] = useState('');
-    const [last_name, set_last_name] = useState('');
 
-    useEffect(() => {
-        return () => {
-            console.log(first_name)
-        };
-    }, [first_name]);
+    let first_name = useRef(null);
+    let last_name = useRef(null);
 
-    // change values in input by id element
-    const content_string = (e) => {
-        if (e.target.id === 'first_name') {
-            set_first_name(e.target.value)
-        } else if (e.target.id === 'last_name') {
-            set_last_name(e.target.value);
+
+    const print_data = ()=> {
+        if (first_name.current.value.length  && last_name.current.value.length) {
+        console.log(first_name.current.value);
+        console.log(last_name.current.value);
+        } else   {
+            console.log('fuck you')
         }
     }
 
-    // add item in users list and print data in console
-    const add_item = () => {
-        set_users([{
-            'first_name': first_name,
-            'last_name': last_name,
-        }]);
-
-        users.map((e) => {
-            console.log(e.first_name + ' ' + e.last_name)
-        });
-
+    const clear_data = ()=> {
+        first_name.current.value = null;
+        last_name.current.value = null;
     }
-
-    // Clear all input in home page
-    const clear_input = () => {
-        set_first_name(' ');
-        set_last_name(' ');
-    }
-
 
     return (
         <div>
             <div className='container'>
                 <label htmlFor="first_name">
-                    <input type="text" placeholder='First Name' name='first_name' id='first_name'
-                           onChange={content_string}/>
+                    <input type="text" placeholder='First Name' name='first_name' id='first_name' ref={first_name}/>
                 </label>
                 <br/>
                 <br/>
                 <label htmlFor="last_name">
-                    <input type="text" placeholder='Last Name' name='last_name' id='last_name'
-                           onChange={content_string}/>
+                    <input type="text" placeholder='Last Name' name='last_name' id='last_name' ref={last_name}/>
                 </label>
                 <br/><br/>
-                <button value='Submit' onClick={add_item}>Submit</button>
+                <button value='Submit' onClick={print_data}>Submit</button>
                 <br/><br/>
-                <button value='Clear' onClick={clear_input}>Clear</button>
+                <button value='Clear' onClick={clear_data}>Clear</button>
             </div>
 
             {/* show all cards start */}
