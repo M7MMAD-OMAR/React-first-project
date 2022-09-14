@@ -36,9 +36,7 @@ const Home = () => {
             last_name: last_name,
         }
         temps.push(temp)
-        setTemps(temp);
         localStorage.setItem('temps', JSON.stringify(temps));
-        console.log(temps.length)
 
 
     }
