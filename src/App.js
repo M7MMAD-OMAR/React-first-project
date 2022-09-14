@@ -1,4 +1,4 @@
-import {BrowserRouter as Router, Link, Navigate, Route, Routes, useNavigate} from "react-router-dom";
+import {Route, Routes} from "react-router-dom";
 import Home from "./components/Home";
 import Footer from "./components/Footer";
 import Content from "./components/Content";
@@ -12,14 +12,12 @@ const App = () => {
     return (
         <>
             <Header/>
-            <Router>
                 <Routes>
                     <Route index element={<Home/>}/>
                     <Route path="about" element={<About/>}/>
                     <Route path="content" element={<Content/>}/>
                     <Route path="*" element={<Error_404/>}/>
                 </Routes>
-            </Router>
             <Footer/>
         </>
     );
