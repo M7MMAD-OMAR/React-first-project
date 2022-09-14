@@ -1,11 +1,17 @@
-import {createContext} from "react";
+import {createContext, useState} from "react";
 
-export const UsersList = createContext();
+export const UsersList = createContext(undefined);
 
 export const Users = ({children}) => {
+    const [users, set_users] = useState()
+
+    const add_users = (value)=> {
+        set_users(value);
+    }
+
     return (
-        <div>
+        <UsersList.Provider value={{users, add_users}}>
             {children}
-        </div>
+        </UsersList.Provider>
     );
 };
