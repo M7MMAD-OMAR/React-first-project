@@ -2,9 +2,12 @@ import img1 from "../images/1.png";
 import img2 from "../images/2.png";
 import img3 from "../images/3.png";
 import Card from "./Card";
-import {useEffect, useRef, useState} from "react";
+import {createContext, useContext, useEffect, useRef, useState} from "react";
 
-const Home = () => {
+
+const Users = createContext([]);
+
+const Home = (props) => {
     const values = [
         {
             title: 'First Title',
@@ -27,22 +30,24 @@ const Home = () => {
     let last_name = useRef(null);
 
 
-    const print_data = ()=> {
-        if (first_name.current.value.length  && last_name.current.value.length) {
-        console.log(first_name.current.value);
-        console.log(last_name.current.value);
-        } else   {
+    const print_data = () => {
+        if (first_name.current.value.length && last_name.current.value.length) {
+            console.log(first_name.current.value);
+            console.log(last_name.current.value);
+        } else {
             console.log('fuck you')
         }
     }
 
-    const clear_data = ()=> {
+    const clear_data = () => {
         first_name.current.value = null;
         last_name.current.value = null;
     }
 
+
+
     return (
-        <div>
+        <Users.Provider value={['hi', ' ', 'fuck']}>
             <div className='container'>
                 <label htmlFor="first_name">
                     <input type="text" placeholder='First Name' name='first_name' id='first_name' ref={first_name}/>
@@ -74,8 +79,8 @@ const Home = () => {
             </div>
             {/* show all cards end */}
 
-        </div>
+        </Users.Provider>
     );
 }
 
-export default Home;
+export  {Home, Users};
