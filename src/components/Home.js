@@ -27,6 +27,7 @@ const Home = () => {
     const [first_name, set_first_name] = useState('');
     const [last_name, set_last_name] = useState('');
 
+    // change values in input by id element
     const content_string = (e) => {
         if (e.target.id === 'first_name') {
             set_first_name(e.target.value)
@@ -35,6 +36,7 @@ const Home = () => {
         }
     }
 
+    // add item in users list and print data in console
     const add_item = () => {
         users.push({
             'first_name': first_name,
@@ -43,7 +45,12 @@ const Home = () => {
         users.map((e) => {
             console.log(e.first_name + ' ' + e.last_name)
         });
+    }
 
+    // Clear all input in home page
+    const clear_input = () => {
+        set_first_name('');
+        set_last_name('');
     }
 
 
@@ -62,6 +69,8 @@ const Home = () => {
                 </label>
                 <br/><br/>
                 <button value='Submit' onClick={add_item}>Submit</button>
+                <br/><br/>
+                <button value='Clear' onClick={clear_input}>Clear</button>
             </div>
 
             {/* show all cards start */}
