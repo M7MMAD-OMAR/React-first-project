@@ -3,6 +3,7 @@ import img2 from "../images/2.png";
 import img3 from "../images/3.png";
 import Card from "./Card";
 import {createContext, useContext, useEffect, useRef, useState} from "react";
+import {UsersList} from "./context/Users";
 
 
 const Home = () => {
@@ -23,7 +24,7 @@ const Home = () => {
             body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
         },
     ];
-
+    const {users, add_users} = useContext(UsersList);
     let first_name = useRef(null);
     let last_name = useRef(null);
 
@@ -32,6 +33,8 @@ const Home = () => {
         if (first_name.current.value.length && last_name.current.value.length) {
             console.log(first_name.current.value);
             console.log(last_name.current.value);
+            add_users(first_name.current.value)
+
         } else {
             console.log('fuck you')
         }
@@ -43,8 +46,10 @@ const Home = () => {
     }
 
 
+
     return (
         <>
+            {users}
             <div className='container'>
                 <label htmlFor="first_name">
                     <input type="text" placeholder='First Name' name='first_name' id='first_name' ref={first_name}/>
