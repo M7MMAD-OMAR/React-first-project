@@ -5,9 +5,7 @@ import Card from "./Card";
 import {createContext, useContext, useEffect, useRef, useState} from "react";
 
 
-const Users = createContext([]);
-
-const Home = (props) => {
+const Home = () => {
     const values = [
         {
             title: 'First Title',
@@ -45,9 +43,8 @@ const Home = (props) => {
     }
 
 
-
     return (
-        <Users.Provider value={['hi', ' ', 'fuck']}>
+        <>
             <div className='container'>
                 <label htmlFor="first_name">
                     <input type="text" placeholder='First Name' name='first_name' id='first_name' ref={first_name}/>
@@ -78,9 +75,8 @@ const Home = (props) => {
                 }
             </div>
             {/* show all cards end */}
-
-        </Users.Provider>
+        </>
     );
 }
 
-export  {Home, Users};
+export {Home};
