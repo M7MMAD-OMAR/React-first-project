@@ -22,7 +22,7 @@ const Home = () => {
             body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
         },
     ];
-    const [users, set_users] = useState(users);
+    const [users, set_users] = useState([]);
     const [first_name, set_first_name] = useState('');
     const [last_name, set_last_name] = useState('');
 
