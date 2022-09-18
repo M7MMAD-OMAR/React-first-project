@@ -1,7 +1,7 @@
 import img1 from "../images/1.png";
 import img2 from "../images/2.png";
 import img3 from "../images/3.png";
-import Card from "./Card";
+import Card from "./build/Card";
 import {useState} from "react";
 
 
