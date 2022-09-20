@@ -61,8 +61,8 @@ export default function Content() {
 
             >
                 <motion.li variants={itemVariants} className="py-1 hover:bg-slate-500">Item 1</motion.li>
-                <motion.li variants={itemVariants}>Item 2</motion.li>
-                <motion.li variants={itemVariants}>Item 3</motion.li>
+                <motion.li variants={itemVariants}>First 2</motion.li>
+                <motion.li variants={itemVariants}>Second 3</motion.li>
                 <motion.li variants={itemVariants}>Item 4</motion.li>
                 <motion.li variants={itemVariants}>Item 5</motion.li>
             </motion.ul>
