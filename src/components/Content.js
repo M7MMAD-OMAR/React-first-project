@@ -1,48 +1,74 @@
-import {useEffect, useState} from "react";
-import {Actions} from "./build/Actions";
-import axios from "axios";
+import {useState} from "react";
+import {motion, Variants} from "framer-motion";
 
-const Content = () => {
-    const [state, setState] = useState([]);
+const itemVariants: Variants = {
+    open: {
+        opacity: 1,
+        y: 0,
+        transition: {type: "spring", stiffness: 300, damping: 24}
+    },
+    closed: {opacity: 0, y: 20, transition: {duration: 0.2}}
+};
 
-    // const get_data = async () => {
-    //     await fetch('https://jsonplaceholder.typicode.com/todos', {
-    //         method: "GET"
-    //     })
-    //         .then(res => res.json())
-    //         .then(data => setState(data));
-    // }
-
-    const get_data = async () => {
-        const res = await axios.get('https://jsonplaceholder.typicode.com/todos')
-
-        setState(res.data)
-    }
-
-
-    useEffect(() => {
-        get_data();
-
-    }, []);
-
+export default function Content() {
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <>
-            <div className="container-fluid flex flex-row flex-wrap space-x-16 space-y-5">
-                {
-                    state.map((item, index) => {
-                        return (
+        <motion.nav
+            initial={false}
+            animate={isOpen ? "open" : "closed"}
+            className="menu"
+        >
+            <motion.button
+                whileTap={{scale: 0.97}}
+                onClick={() => setIsOpen(!isOpen)}
+                className="bg-blue-900 w-1/3 rounded-full flex flex-row justify-center py-2"
+            >
+                <span className="mx-3">Menu</span>
+                <motion.div
+                    variants={{
+                        open: {rotate: 180},
+                        closed: {rotate: 0}
+                    }}
+                    transition={{duration: 0.2}}
+                    style={{originY: 0.55, marginTop: 6}}
+                >
+                    <svg width="15" height="15" viewBox="0 0 20 20">
+                        <path d="M0 7 L 20 7 L 10 16"/>
+                    </svg>
+                </motion.div>
+            </motion.button>
+            <motion.ul
+                variants={{
+                    open: {
+                        clipPath: "inset(0% 0% 0% 0% round 10px)",
+                        transition: {
+                            type: "spring",
+                            bounce: 0,
+                            duration: 0.7,
+                            delayChildren: 0.3,
+                            staggerChildren: 0.05
+                        }
+                    },
+                    closed: {
+                        clipPath: "inset(10% 50% 90% 50% round 10px)",
+                        transition: {
+                            type: "spring",
+                            bounce: 0,
+                            duration: 0.3
+                        }
+                    }
+                }}
+                style={{pointerEvents: isOpen ? "auto" : "none"}}
+                className="bg-slate-400 text-black px-4 rounded-sm w-1/3"
 
-                            <article className="first:ml-16 first:mt-5">
-                                <Actions key={index} title={item.title} body={item.title}/>
-                            </article>
-
-                        )
-                    })
-                }
-            </div>
-        </>
+            >
+                <motion.li variants={itemVariants} className="py-1 hover:bg-slate-500">Item 1</motion.li>
+                <motion.li variants={itemVariants}>Item 2</motion.li>
+                <motion.li variants={itemVariants}>Item 3</motion.li>
+                <motion.li variants={itemVariants}>Item 4</motion.li>
+                <motion.li variants={itemVariants}>Item 5</motion.li>
+            </motion.ul>
+        </motion.nav>
     );
 }
-
-export default Content;
