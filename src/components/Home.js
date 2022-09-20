@@ -43,7 +43,6 @@ const Home = () => {
         clear_input();
     }
 
-
     return (<>
 
         {/* input text */}
@@ -90,7 +89,6 @@ const Home = () => {
             </tbody>
         </table>
 
-
         {/* show all cards start */}
         <div className="flex flex-row  my-6 flex-wrap">
             {values.length ? (values.map((item, index) => {
@@ -98,6 +96,7 @@ const Home = () => {
             })) : (<h1>Don't have any data</h1>)}
         </div>
         {/* show all cards end */}
+
     </>);
 }
 
