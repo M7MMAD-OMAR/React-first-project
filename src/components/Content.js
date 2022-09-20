@@ -17,13 +17,11 @@ export default function Content() {
         <motion.nav
             initial={false}
             animate={isOpen ? "open" : "closed"}
-            className="menu"
-        >
+            className="menu">
             <motion.button
                 whileTap={{scale: 0.97}}
                 onClick={() => setIsOpen(!isOpen)}
-                className="bg-blue-900 w-1/3 rounded-full flex flex-row justify-center py-2"
-            >
+                className="bg-blue-900 w-1/3 rounded-full flex flex-row justify-center py-2">
                 <span className="mx-3">Menu</span>
                 <motion.div
                     variants={{
@@ -31,8 +29,7 @@ export default function Content() {
                         closed: {rotate: 0}
                     }}
                     transition={{duration: 0.2}}
-                    style={{originY: 0.55, marginTop: 6}}
-                >
+                    style={{originY: 0.55, marginTop: 6}}>
                     <svg width="15" height="15" viewBox="0 0 20 20">
                         <path d="M0 7 L 20 7 L 10 16"/>
                     </svg>
