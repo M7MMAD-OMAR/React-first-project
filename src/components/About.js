@@ -1,6 +1,8 @@
 import {useReducer} from "react";
 import ChangeNumber from "./reducers/ChangeNumber";
 
+
+
 const About = () => {
     const numbers = {
         counter: 0,
@@ -8,6 +10,7 @@ const About = () => {
     const [counter_state, counter_dispatch] = useReducer(ChangeNumber, numbers);
 
     return (
+
         <div className="min-h-screen">
             <button className="btn btn-circle" onClick={() => {
                 counter_dispatch({type: '+'})
