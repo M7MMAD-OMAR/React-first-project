@@ -10,10 +10,13 @@ const itemVariants: Variants = {
     closed: {opacity: 0, y: 20, transition: {duration: 0.2}}
 };
 
+
+
 export default function Content() {
     const [isOpen, setIsOpen] = useState(false);
 
     return (
+
         <motion.nav
             initial={false}
             animate={isOpen ? "open" : "closed"}
@@ -57,9 +60,7 @@ export default function Content() {
                     }
                 }}
                 style={{pointerEvents: isOpen ? "auto" : "none"}}
-                className="bg-slate-400 text-black px-4 rounded-sm w-1/3"
-
-            >
+                className="bg-slate-400 text-black px-4 rounded-sm w-1/3">
                 <motion.li variants={itemVariants} className="py-1 hover:bg-slate-500">Item 1</motion.li>
                 <motion.li variants={itemVariants}>First 2</motion.li>
                 <motion.li variants={itemVariants}>Second 3</motion.li>
