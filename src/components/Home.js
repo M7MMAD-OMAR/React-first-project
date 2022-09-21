@@ -3,6 +3,8 @@ import img2 from "../images/2.png";
 import img3 from "../images/3.png";
 import Card from "./build/Card";
 import {useState} from "react";
+import {DECREMENT, INCREMENT} from "../publicParameters/parameters";
+import {useDispatch, useSelector} from "react-redux";
 
 
 const Home = () => {
@@ -43,7 +45,34 @@ const Home = () => {
         clear_input();
     }
 
+    const data_counter = useSelector(state => state.counter);
+
+    const dispatchCounter = useDispatch();
+
     return (<>
+
+        {/* Redux */}
+
+        <div className="min-h-screen">
+            <button className="btn btn-circle" onClick={()=> dispatchCounter({type: INCREMENT})}>
+                <p>{INCREMENT}</p>
+            </button>
+
+            <button className="btn btn-circle" onClick={()=> dispatchCounter({type: DECREMENT})} >
+                <p>{DECREMENT}</p>
+            </button>
+
+            <button className="btn btn-circle" onClick={()=> dispatchCounter({type: "clear"})} >
+                <p>C..</p>
+            </button>
+
+            <br/>
+            <p>{data_counter}</p>
+        </div>
+
+
+
+
 
         {/* input text */}
         <div className='container'>
