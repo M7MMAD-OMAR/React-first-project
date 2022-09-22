@@ -45,24 +45,24 @@ const Home = () => {
         clear_input();
     }
 
-    const data_counter = useSelector(state => state.counter);
+    const data_counter = useSelector(state => state.Counter.counter);
 
-    const dispatchCounter = useDispatch();
+    const dispatch = useDispatch();
 
     return (<>
 
         {/* Redux */}
 
         <div className="min-h-screen">
-            <button className="btn btn-circle" onClick={()=> dispatchCounter({type: INCREMENT})}>
+            <button className="btn btn-circle" onClick={()=> dispatch({type: INCREMENT})}>
                 <p>{INCREMENT}</p>
             </button>
 
-            <button className="btn btn-circle" onClick={()=> dispatchCounter({type: DECREMENT})} >
+            <button className="btn btn-circle" onClick={()=> dispatch({type: DECREMENT})} >
                 <p>{DECREMENT}</p>
             </button>
 
-            <button className="btn btn-circle" onClick={()=> dispatchCounter({type: "clear"})} >
+            <button className="btn btn-circle" onClick={()=> dispatch({type: "clear"})} >
                 <p>C..</p>
             </button>
 
