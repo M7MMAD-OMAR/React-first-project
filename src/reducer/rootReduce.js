@@ -3,6 +3,6 @@ import {combineReducers} from "redux";
 
 
 export const rootReduce = combineReducers({
-    Counter: reducerCounter,
+	Counter: reducerCounter,
 
 })
