@@ -8,125 +8,122 @@ import {useDispatch, useSelector} from "react-redux";
 
 
 const Home = () => {
-    const values = [{
-        title: 'First Title',
-        img: img1,
-        body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
-    }, {
-        title: 'Second Title',
-        img: img2,
-        body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
-    }, {
-        title: 'Third Title',
-        img: img3,
-        body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
-    },];
-    const [first_name, setFirst_name] = useState('');
-    const [last_name, setLast_name] = useState('');
-    const [users, setUsers] = useState(JSON.parse(localStorage.getItem('users') || '[]'))
+	const values = [{
+		title: 'First Title',
+		img: img1,
+		body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
+	}, {
+		title: 'Second Title',
+		img: img2,
+		body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
+	}, {
+		title: 'Third Title',
+		img: img3,
+		body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet distinctio illo, minus reiciendis repellat rerum"
+	},];
+	const [first_name, setFirst_name] = useState('');
+	const [last_name, setLast_name] = useState('');
+	const [users, setUsers] = useState(JSON.parse(localStorage.getItem('users') || '[]'))
 
 
-    // Clear all input from home page
-    const clear_input = () => {
-        setFirst_name('');
-        setLast_name('');
-    }
+	// Clear all input from home page
+	const clear_input = () => {
+		setFirst_name('');
+		setLast_name('');
+	}
 
 
-    // print add data from users array in home page
-    const print_data = () => {
-        let temp = {
-            first_name: first_name,
-            last_name: last_name,
-        }
-        users.push(temp)
-        setUsers(users);
-        localStorage.setItem('users', JSON.stringify(users));
-        clear_input();
-    }
+	// print add data from users array in home page
+	const print_data = () => {
+		let temp = {
+			first_name: first_name,
+			last_name: last_name,
+		}
+		users.push(temp)
+		setUsers(users);
+		localStorage.setItem('users', JSON.stringify(users));
+		clear_input();
+	}
 
-    const data_counter = useSelector(state => state.Counter.counter);
+	const data_counter = useSelector(state => state.Counter.counter);
 
-    const dispatch = useDispatch();
+	const dispatch = useDispatch();
 
-    return (<>
+	return (<>
 
-        {/* Redux */}
+		{/* Redux */}
 
-        <div className="min-h-screen">
-            <button className="btn btn-circle" onClick={()=> dispatch({type: INCREMENT})}>
-                <p>{INCREMENT}</p>
-            </button>
+		<div className="min-h-screen">
+			<button className="btn btn-circle" onClick={() => dispatch({type: INCREMENT})}>
+				<p>{INCREMENT}</p>
+			</button>
 
-            <button className="btn btn-circle" onClick={()=> dispatch({type: DECREMENT})} >
-                <p>{DECREMENT}</p>
-            </button>
+			<button className="btn btn-circle" onClick={() => dispatch({type: DECREMENT})}>
+				<p>{DECREMENT}</p>
+			</button>
 
-            <button className="btn btn-circle" onClick={()=> dispatch({type: "clear"})} >
-                <p>C..</p>
-            </button>
+			<button className="btn btn-circle" onClick={() => dispatch({type: "clear"})}>
+				<p>C..</p>
+			</button>
 
-            <br/>
-            <p>{data_counter}</p>
-        </div>
-
-
+			<br/>
+			<p>{data_counter}</p>
+		</div>
 
 
+		{/* input text */}
+		<div className='container'>
+			<label htmlFor="first_name">
+				<input type="text" placeholder='First Name' name='first_name' id='first_name'
+					   value={first_name} onChange={(e) => {
+					setFirst_name(e.target.value)
+				}}/>
+			</label>
+			<br/>
+			<br/>
+			<label htmlFor="last_name">
+				<input type="text" placeholder='Last Name' name='last_name' id='last_name'
+					   value={last_name} onChange={(e) => {
+					setLast_name(e.target.value)
+				}}/>
+			</label>
+			<br/><br/>
+			<button onClick={print_data}>Submit</button>
+			<br/><br/>
+			<button onClick={clear_input}>Clear</button>
+		</div>
 
-        {/* input text */}
-        <div className='container'>
-            <label htmlFor="first_name">
-                <input type="text" placeholder='First Name' name='first_name' id='first_name'
-                       value={first_name} onChange={(e) => {
-                    setFirst_name(e.target.value)
-                }}/>
-            </label>
-            <br/>
-            <br/>
-            <label htmlFor="last_name">
-                <input type="text" placeholder='Last Name' name='last_name' id='last_name'
-                       value={last_name} onChange={(e) => {
-                    setLast_name(e.target.value)
-                }}/>
-            </label>
-            <br/><br/>
-            <button onClick={print_data}>Submit</button>
-            <br/><br/>
-            <button onClick={clear_input}>Clear</button>
-        </div>
 
+		{/* Show Data in table*/}
+		<table>
+			<thead>
+			<tr>
+				<th>#</th>
+				<th>First Name</th>
+				<th>last Name</th>
+			</tr>
+			</thead>
 
-        {/* Show Data in table*/}
-        <table>
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>last Name</th>
-            </tr>
-            </thead>
+			<tbody>
+			{users.map((item, key) => {
+				return <tr key={key}>
+					<td>{key}</td>
+					<td>{item.first_name}</td>
+					<td>{item.last_name}</td>
+				</tr>
+			})}
+			</tbody>
+		</table>
 
-            <tbody>
-            {users.map((item, key) => {
-                return <tr key={key}>
-                    <td>{key}</td>
-                    <td>{item.first_name}</td>
-                    <td>{item.last_name}</td>
-                </tr>
-            })}
-            </tbody>
-        </table>
+		{/* show all cards start */}
+		<div className="flex flex-row  my-6 flex-wrap">
+			{values.length ? (values.map((item, index) => {
+				return <Card key={index} title={item.title} img={item.img} body={item.body}/>;
+			})) : (<h1>Don't have any data</h1>)}
+		</div>
+		{/* show all cards end */}
 
-        {/* show all cards start */}
-        <div className="flex flex-row  my-6 flex-wrap">
-            {values.length ? (values.map((item, index) => {
-                return <Card key={index} title={item.title} img={item.img} body={item.body}/>;
-            })) : (<h1>Don't have any data</h1>)}
-        </div>
-        {/* show all cards end */}
-
-    </>);
+	</>);
 }
 
 export {Home};
